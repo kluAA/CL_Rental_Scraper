@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    awesome_print (1.8.0)
     byebug (11.1.1)
     httparty (0.18.0)
       mime-types (~> 3.0)
@@ -17,6 +18,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   byebug
   httparty
   nokogiri
