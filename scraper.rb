@@ -4,12 +4,14 @@ require 'byebug'
 require 'awesome_print'
 require 'csv'
 
+# This is the original scraper function that I wrote to test in the terminal and
+# later added Rails to it
+
 def scraper(city)
     url = "https://#{city.downcase}.craigslist.org/search/apa?availabilityMode=0&max_bathrooms=2&max_bedrooms=3&min_bathrooms=2&min_bedrooms=3"
     unparsed_page = HTTParty.get(url)
     parsed_page = Nokogiri::HTML(unparsed_page)
 
-    # range = parsed_page.css('span.rangTo')[0].text.to_i
     listings = parsed_page.css('a.result-title')
     list_count = listings.count
     total_count = parsed_page.css('span.totalcount')[0].text.to_i

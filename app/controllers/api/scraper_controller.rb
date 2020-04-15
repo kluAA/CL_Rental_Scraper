@@ -51,9 +51,6 @@ class Api::ScraperController < ApplicationController
                     csv << list_info
 
                 end
-                puts rangeStart
-                puts list_count
-                puts
                 rangeStart += list_count
             end
         end
