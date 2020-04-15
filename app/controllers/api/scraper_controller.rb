@@ -31,7 +31,8 @@ class Api::ScraperController < ApplicationController
 
         file = CSV.generate do |csv|
             csv << ["Title", "Rent", "Address", "URL"]
-            while rangeStart < rangeEnd
+            while rangeStart < 600 && rangeStart < rangeEnd
+            #limit to 600 due to heroku 30 second request timeout restriction
                 pagination_url = "https://#{city.downcase}.craigslist.org/search/apa?s=#{rangeStart}&availabilityMode=0&max_bathrooms=2&max_bedrooms=3&min_bathrooms=2&min_bedrooms=3"
                 unparsed_current_page = HTTParty.get(pagination_url)
                 parsed_current = Nokogiri::HTML(unparsed_current_page)
@@ -48,8 +49,11 @@ class Api::ScraperController < ApplicationController
                     ]
                     
                     csv << list_info
-            
+
                 end
+                puts rangeStart
+                puts list_count
+                puts
                 rangeStart += list_count
             end
         end
