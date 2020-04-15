@@ -30,7 +30,8 @@ document.addEventListener("DOMContentLoaded", e => {
         return $.ajax({
             method: "GET",
             url: "/api/scraper",
-            data: { scraper: { city: city}}
+            data: { scraper: { city: city}},
+            headers: { "Transfer-Encoding": "chunked" } 
         })
     }
 })
