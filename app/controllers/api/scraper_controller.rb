@@ -2,13 +2,23 @@ class Api::ScraperController < ApplicationController
 
     def index
         city = params[:scraper][:city]
-        send_data scraper(city), filename: "#{city.capitalize}_CL_3_Bedroom_2_Bathroom.csv"
+        csv = scraper(city)
+        if !csv 
+            render json: 'Invalid city, check Craigslist for valid prefix.', status: 404
+        else
+            send_data csv, filename: "#{city.capitalize}_CL_3_Bedroom_2_Bathroom.csv"
+        end
     end
 
     private
     def scraper(city)
         url = "https://#{city.downcase}.craigslist.org/search/apa?availabilityMode=0&max_bathrooms=2&max_bedrooms=3&min_bathrooms=2&min_bedrooms=3"
-        unparsed_page = HTTParty.get(url)
+        begin
+            unparsed_page = HTTParty.get(url)
+        rescue
+            return false
+        end
+     
         parsed_page = Nokogiri::HTML(unparsed_page)
 
         listings = parsed_page.css('a.result-title')
@@ -21,7 +31,7 @@ class Api::ScraperController < ApplicationController
 
         file = CSV.generate do |csv|
             csv << ["Title", "Rent", "Address", "URL"]
-            # while rangeStart < rangeEnd
+            while rangeStart < rangeEnd
                 pagination_url = "https://#{city.downcase}.craigslist.org/search/apa?s=#{rangeStart}&availabilityMode=0&max_bathrooms=2&max_bedrooms=3&min_bathrooms=2&min_bedrooms=3"
                 unparsed_current_page = HTTParty.get(pagination_url)
                 parsed_current = Nokogiri::HTML(unparsed_current_page)
@@ -41,7 +51,7 @@ class Api::ScraperController < ApplicationController
             
                 end
                 rangeStart += list_count
-            # end
+            end
         end
         return file
     end

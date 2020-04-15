@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", e => {
     const message = document.getElementById("message");
     button.addEventListener('click', e => {
         e.preventDefault();
-        message.innerText = "Download: Generating link..."
+        message.innerText = "Download: Generating link...";
+        linkLocation.innerHTML = "";
         grabCSV(input.value)
             .then(csv => {
                 const link = document.createElement("a");
@@ -16,7 +17,13 @@ document.addEventListener("DOMContentLoaded", e => {
                 link.setAttribute("download", `${date}_${input.value}_3_bedroom_2_bathroom.csv`);
                 link.text = `${date}_${input.value}_3_bedroom_2_bathroom.csv`;
                 linkLocation.append(link);
-            })
+            }, err => {
+                message.innerText = "Download: ";
+                let errorMsg = document.createElement("span");
+                errorMsg.setAttribute("id", "error");
+                errorMsg.innerText = `${err.responseText}`;
+                linkLocation.append(errorMsg);
+            })    
     })
 
     function grabCSV(city) {

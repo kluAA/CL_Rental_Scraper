@@ -42,6 +42,11 @@ button, a {
     margin: 0 15px;
 }
 
+.nav-bar h1 {
+    color: #2388e8;
+    margin-top: 6px;
+}
+
 #splash-container {
     margin-top: 81px;
 }
@@ -62,7 +67,7 @@ button, a {
     box-sizing: border-box;
 }
 
-h1 {
+.left-container h1 {
     color: #073863;
     font-size: 45px;
     font-weight: 500;
@@ -124,10 +129,30 @@ p {
     text-decoration: underline;
 }
 
+#error {
+    color: rgb(218, 10, 10);
+}
+
 footer {
     min-height: 264px;
     max-height: 300px;
     background: #2d7db8;
     box-sizing: border-box;
+    color: white;
+    font-weight: 200;
+    padding-left: 50px;
+    padding-top: 10px;
 }
 
+footer li {
+    display: flex;
+    margin-top: 10px;
+}
+
+footer li > div {
+    width: 20px;
+}
+
+footer i {
+    margin-right: 5px;
+}
