@@ -25,7 +25,7 @@ class Api::ScraperController < ApplicationController
         list_count = listings.count
         total_count = parsed_page.css('span.totalcount')[0].text.to_i
         rangeStart = 0
-        # last page will be the remainder 
+        # last page will be the remainder.
         rangeEnd = total_count - (total_count % list_count)
 
 
