@@ -2,7 +2,7 @@ class Api::ScraperController < ApplicationController
 
     def index
         city = params[:scraper][:city]
-        send_data scraper("atlanta"), filename: "#{city.capitalize}_CL_3_Bedroom_2_Bathroom.csv"
+        send_data scraper(city), filename: "#{city.capitalize}_CL_3_Bedroom_2_Bathroom.csv"
     end
 
     private
@@ -21,7 +21,7 @@ class Api::ScraperController < ApplicationController
 
         file = CSV.generate do |csv|
             csv << ["Title", "Rent", "Address", "URL"]
-            while rangeStart < rangeEnd
+            # while rangeStart < rangeEnd
                 pagination_url = "https://#{city.downcase}.craigslist.org/search/apa?s=#{rangeStart}&availabilityMode=0&max_bathrooms=2&max_bedrooms=3&min_bathrooms=2&min_bedrooms=3"
                 unparsed_current_page = HTTParty.get(pagination_url)
                 parsed_current = Nokogiri::HTML(unparsed_current_page)
@@ -41,7 +41,7 @@ class Api::ScraperController < ApplicationController
             
                 end
                 rangeStart += list_count
-            end
+            # end
         end
         return file
     end
