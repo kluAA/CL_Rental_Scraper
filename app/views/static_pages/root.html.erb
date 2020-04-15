@@ -1,6 +1,41 @@
 <main id='root'>
-    <input id="city-input" type="text" placeholder="Enter city here" />
-    <button id="grab-link">Grab Link</button>
-    <span>Your link will show up:</span>
-    <span id="link"></span>
+    <nav class="nav-bar">
+        <img id="logo" src="/assets/71lbslogo.png">
+    </nav>
+    
+    <div id="splash-container">
+        <div id="splash">
+            <div>
+
+
+            <div class="left-container">
+                <h1>Great housing deals in your area go unnoticed every day. Where are yours?</h1>
+                <p>
+                    Enter your city below to scrape and grab a CSV file of all of the 3 bedroom, 2 bathroom housing near your area from Craigslist. 
+                    Data includes advertising title, rental price, location, and link to the listing. Please wait a moment for the 
+                    CSV link to be generated. File will usually contain around 3000 entries.
+                </p>
+                <div id="scrape-city">
+                
+                    <input id="city-input" type="text" placeholder="Enter city here ex. tampa" />
+                   
+                    <button id="grab-link">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div id="download">
+                    <span id="message">Download: </span>
+                    <span id="link"></span>
+                 </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    
+    <footer> 
+
+    </footer>
 </main>

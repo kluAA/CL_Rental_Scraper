@@ -1,3 +1,133 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//reset
+html, body, textarea, button, input, nav, label, div, hr, p, form, a, h1, h2, ul, li, select {
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-family: sans-serif;
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+    resize: none;
+    outline: none;
+    list-style: none;
+
+}
+
+button, a {
+    cursor: pointer;
+}
+
+.nav-bar {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    border-bottom: 1px solid #d0d4d9;
+    box-shadow: 0 1px 4px #d0d4d9;
+    top: 0;
+    background: white;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    width: 70px;
+    height: 46px;
+    margin: 0 15px;
+}
+
+#splash-container {
+    margin-top: 81px;
+}
+
+#splash {
+    background: url('/assets/splash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 550px;
+}
+
+.left-container {
+    min-height: 550px;
+    width: 650px;
+    padding-top: 47px;
+    padding-left: 50px;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #073863;
+    font-size: 45px;
+    font-weight: 500;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 17px;
+    color: #424242;
+    line-height: 25px;
+}
+
+#scrape-city {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#scrape-city input {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 25px;
+    height: 45px;
+    width: 350px;
+    padding: 10px 20px;
+}
+
+
+
+#grab-link {
+    box-sizing: border-box;
+    background: #2d7db8;
+    color: white;
+    height: 45px;
+    font-size: 25px;
+    padding: 10px 20px;
+    margin-left: -3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+#grab-link:hover {
+    background: #3289c7;
+}
+
+#download {
+    margin-top: 20px;
+    font-size: 17px;
+    color: #424242;
+}
+
+#download a {
+    color: #1e6bb4;
+}
+
+#download a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    min-height: 264px;
+    max-height: 300px;
+    background: #2d7db8;
+    box-sizing: border-box;
+}
+

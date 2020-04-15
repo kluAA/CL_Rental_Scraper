@@ -7,7 +7,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script src="https://kit.fontawesome.com/f391d4e959.js" crossorigin="anonymous"></script>
   </head>
+    <script type="text/javascript">
+      window.logo = "<%= image_url('71lbslogo.png') %>";    
+    </script>
+
 
   <body>
     <%= yield %>
